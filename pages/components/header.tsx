@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-function Header() {
+// header component
+
+function Header({ isConnected, address, connect }) {
   return (
     <header>
       <div className="leftH">
@@ -18,10 +20,18 @@ function Header() {
           <img src="/eth.svg" alt="loading.." className="eth" />
           Etherium
         </div>
-        <div className="connectButton">Connect</div>
+        <div className="connectButton" onClick={connect}>
+          {isConnected
+            ? address.slice(0, 4) + "..." + address.slice(38)
+            : "Connect Wallet"}
+        </div>
       </div>
     </header>
   );
 }
 
 export default Header;
+
+
+
+// 0xdf1d11025f2a22b9dc01c7a100b4f6ddebac82a3;
